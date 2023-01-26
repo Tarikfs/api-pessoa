@@ -1,16 +1,16 @@
 package tarikfs.apipessoa.dto.enderecoDto;
 
-public class enderecoDto {
+public class EnderecoDto {
 
     private String logradouro;
     private String cep;
     private String numero;
     private String cidade;
 
-    public enderecoDto() {
+    public EnderecoDto() {
     }
 
-    public enderecoDto(String logradouro, String cep, String numero, String cidade) {
+    public EnderecoDto(String logradouro, String cep, String numero, String cidade) {
         this.logradouro = logradouro;
         this.cep = cep;
         this.numero = numero;
