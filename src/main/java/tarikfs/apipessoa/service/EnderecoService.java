@@ -3,6 +3,7 @@ package tarikfs.apipessoa.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import tarikfs.apipessoa.dto.enderecoDto.EnderecoDto;
 import tarikfs.apipessoa.mapper.EnderecoMapper;
 import tarikfs.apipessoa.model.Endereco;
@@ -17,6 +18,7 @@ public class EnderecoService {
     @Autowired
     EnderecoMapper enderecoMapper;
 
+    @Transactional
     public EnderecoDto postEnderco(EnderecoDto enderecoDto) {
         Endereco endereco = enderecoMapper.toModelEndereco(enderecoDto);
         enderecoRepository.save(endereco);
