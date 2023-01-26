@@ -1,23 +1,31 @@
 package tarikfs.apipessoa.model;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Endereco {
 
+    @Size(min = 1, max = 50)
     private String logradouro;
-    private String cep;
-    private String numero;
+
+    @Size(min = 8, max = 8)
+    private int cep;
+
+    @Size(min = 1, max = 50)
     private String cidade;
+
+    private int numero;
 
     public Endereco() {
     }
 
-    public Endereco(String logradouro, String cep, String numero, String cidade) {
+    public Endereco(@Size(min = 1, max = 50) String logradouro, @Size(min = 8, max = 8) int cep,
+            @Size(min = 1, max = 50) String cidade, int numero) {
         this.logradouro = logradouro;
         this.cep = cep;
-        this.numero = numero;
         this.cidade = cidade;
+        this.numero = numero;
     }
 
     public String getLogradouro() {
@@ -28,20 +36,12 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public String getCep() {
+    public int getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setCep(int cep) {
         this.cep = cep;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
     }
 
     public String getCidade() {
@@ -50,6 +50,14 @@ public class Endereco {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
 }
