@@ -4,29 +4,18 @@ import java.sql.Date;
 
 import tarikfs.apipessoa.model.Endereco;
 
-public class PessoaDto {
-
-    private Long id;
+public class RegistraPessoaDto {
     private String nome;
     private Date DataNascimento;
     Endereco endereco;
 
-    public PessoaDto() {
+    public RegistraPessoaDto() {
     }
 
-    public PessoaDto(Long id, String nome, Date dataNascimento, Endereco endereco) {
-        this.id = id;
+    public RegistraPessoaDto(String nome, Date dataNascimento, Endereco endereco) {
         this.nome = nome;
         this.DataNascimento = dataNascimento;
         this.endereco = endereco;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -52,7 +41,5 @@ public class PessoaDto {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
-    
 
 }
