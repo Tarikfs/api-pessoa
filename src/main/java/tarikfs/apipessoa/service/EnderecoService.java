@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
-import tarikfs.apipessoa.dto.enderecoDto.EnderecoDto;
+import tarikfs.apipessoa.dto.EnderecoDto;
 import tarikfs.apipessoa.mapper.EnderecoMapper;
 import tarikfs.apipessoa.model.Endereco;
 import tarikfs.apipessoa.repository.EnderecoRepository;

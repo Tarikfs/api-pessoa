@@ -1,4 +1,4 @@
-package tarikfs.apipessoa.dto.enderecoDto;
+package tarikfs.apipessoa.dto;
 
 public class EnderecoDto {
 

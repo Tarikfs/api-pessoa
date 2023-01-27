@@ -1,20 +1,35 @@
 package tarikfs.apipessoa.model;
 
+import java.io.Serializable;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
 @Entity
-public class Endereco {
+public class Endereco implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Size(min = 1, max = 50)
+    @Column(name = "logradouro")
     private String logradouro;
 
     @Size(min = 8, max = 8)
+    @Column(name = "cep")
     private int cep;
 
     @Size(min = 1, max = 50)
+    @Column(name = "cidade")
     private String cidade;
 
+    @Column(name = "numero")
     private int numero;
 
     public Endereco() {

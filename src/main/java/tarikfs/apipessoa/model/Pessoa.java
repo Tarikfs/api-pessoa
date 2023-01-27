@@ -5,11 +5,11 @@ import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
@@ -20,15 +20,17 @@ public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, unique = true, nullable = false)
     private Long id;
 
     @Size(min = 1, max = 50)
+    @Column(name = "nome")
     private String nome;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date DataNascimento;
+    @Column(name = "data_nascimento")
+    private Date dataNascimento;
 
-    @OneToMany
     Endereco endereco;
 
     public Pessoa() {
@@ -37,7 +39,7 @@ public class Pessoa implements Serializable {
     public Pessoa(Long id, @Size(min = 1, max = 50) String nome, Date dataNascimento, Endereco endereco) {
         this.id = id;
         this.nome = nome;
-        this.DataNascimento = dataNascimento;
+        this.dataNascimento = dataNascimento;
         this.endereco = endereco;
     }
 
@@ -62,11 +64,11 @@ public class Pessoa implements Serializable {
     }
 
     public Date getDataNascimento() {
-        return DataNascimento;
+        return dataNascimento;
     }
 
     public void setDataNascimento(Date dataNascimento) {
-        DataNascimento = dataNascimento;
+        this.dataNascimento = dataNascimento;
     }
 
     public Endereco getEndereco() {

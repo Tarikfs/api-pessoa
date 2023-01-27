@@ -1,4 +1,4 @@
-package tarikfs.apipessoa.dto.pessoaDto;
+package tarikfs.apipessoa.dto;
 
 import java.sql.Date;
 
