@@ -1,30 +1,20 @@
 package tarikfs.apipessoa.dto;
 
-public class EnderecoDto {
+public class RegistraEnderecoDto {
 
-    private Long id;
     private String logradouro;
     private String cep;
     private String numero;
     private String cidade;
 
-    public EnderecoDto() {
+    public RegistraEnderecoDto() {
     }
 
-    public EnderecoDto(Long id, String logradouro, String cep, String numero, String cidade) {
-        this.id = id;
+    public RegistraEnderecoDto(String logradouro, String cep, String numero, String cidade) {
         this.logradouro = logradouro;
         this.cep = cep;
         this.numero = numero;
         this.cidade = cidade;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getLogradouro() {
@@ -58,5 +48,4 @@ public class EnderecoDto {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-
 }
