@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import tarikfs.apipessoa.dto.PessoaDto;
+import tarikfs.apipessoa.dto.RegistraPessoaDto;
 import tarikfs.apipessoa.model.Pessoa;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
@@ -18,5 +19,12 @@ public interface PessoaMapper {
     PessoaDto toDtoPessoa(Pessoa pessoa);
 
     List<PessoaDto> toDtoPessoaList(List<Pessoa> pessoas);
+
+    List<Pessoa> toModelPessoaList(List<PessoaDto> pessoasDto);
+
+    RegistraPessoaDto toDtoRegistraPessoa(Pessoa pessoa);
+
+    @Mapping(target = "id", ignore = true)
+    Pessoa toModelRegistraPessoa(RegistraPessoaDto registraPessoaDto);
 
 }
