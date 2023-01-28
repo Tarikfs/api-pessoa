@@ -1,5 +1,7 @@
 package tarikfs.apipessoa.dto;
 
+import tarikfs.apipessoa.model.Pessoa;
+
 public class RegistraEnderecoDto {
 
     private String logradouro;
@@ -7,16 +9,19 @@ public class RegistraEnderecoDto {
     private int numero;
     private String cidade;
     private boolean principal;
+    private Pessoa pessoa;
 
     public RegistraEnderecoDto() {
     }
 
-    public RegistraEnderecoDto(String logradouro, int cep, int numero, String cidade, boolean principal) {
+    public RegistraEnderecoDto(String logradouro, int cep, int numero, String cidade, boolean principal,
+            Pessoa pessoa) {
         this.logradouro = logradouro;
         this.cep = cep;
         this.numero = numero;
         this.cidade = cidade;
         this.principal = principal;
+        this.pessoa = pessoa;
     }
 
     public String getLogradouro() {
@@ -57,6 +62,14 @@ public class RegistraEnderecoDto {
 
     public void setPrincipal(boolean principal) {
         this.principal = principal;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
 }

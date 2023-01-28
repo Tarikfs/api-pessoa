@@ -1,5 +1,7 @@
 package tarikfs.apipessoa.dto;
 
+import tarikfs.apipessoa.model.Pessoa;
+
 public class EnderecoDto {
 
     private Long id;
@@ -8,17 +10,20 @@ public class EnderecoDto {
     private int numero;
     private String cidade;
     private boolean principal;
+    private Pessoa pessoa;
 
     public EnderecoDto() {
     }
 
-    public EnderecoDto(Long id, String logradouro, int cep, int numero, String cidade, boolean principal) {
+    public EnderecoDto(Long id, String logradouro, int cep, int numero, String cidade, boolean principal,
+            Pessoa pessoa) {
         this.id = id;
         this.logradouro = logradouro;
         this.cep = cep;
         this.numero = numero;
         this.cidade = cidade;
         this.principal = principal;
+        this.pessoa = pessoa;
     }
 
     public Long getId() {
@@ -68,6 +73,13 @@ public class EnderecoDto {
     public void setPrincipal(boolean principal) {
         this.principal = principal;
     }
-    
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
 
 }

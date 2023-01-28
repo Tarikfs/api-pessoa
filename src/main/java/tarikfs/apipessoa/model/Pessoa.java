@@ -2,6 +2,7 @@ package tarikfs.apipessoa.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -10,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
@@ -31,16 +33,16 @@ public class Pessoa implements Serializable {
     @Column(name = "data_nascimento")
     private Date dataNascimento;
 
-    Endereco endereco;
+    @OneToMany(mappedBy = "pessoa")
+    private List<Endereco> enderecos;
 
     public Pessoa() {
     }
 
-    public Pessoa(Long id, @Size(min = 1, max = 50) String nome, Date dataNascimento, Endereco endereco) {
+    public Pessoa(Long id, String nome, Date dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
     }
 
     public static long getSerialversionuid() {
@@ -71,12 +73,12 @@ public class Pessoa implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 
 }

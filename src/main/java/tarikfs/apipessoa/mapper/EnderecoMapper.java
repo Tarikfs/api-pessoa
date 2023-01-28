@@ -24,6 +24,7 @@ public interface EnderecoMapper {
 
     RegistraEnderecoDto toDtoRegistraEndereco(Endereco endereco);
 
+    @Mapping(target = "id", ignore = true)
     Endereco toModelRegistraEndereco(RegistraEnderecoDto enderecoDto);
 
 }
