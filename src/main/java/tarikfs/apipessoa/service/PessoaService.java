@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import tarikfs.apipessoa.dto.PessoaDto;
+import tarikfs.apipessoa.dto.RegistraPessoaDto;
 import tarikfs.apipessoa.mapper.PessoaMapper;
 import tarikfs.apipessoa.model.Pessoa;
 import tarikfs.apipessoa.repository.PessoaRepository;
@@ -21,14 +22,19 @@ public class PessoaService {
     PessoaRepository pessoaRepository;
 
     @Transactional
-    public PessoaDto createPessoa(PessoaDto pessoaDto) {
-        Pessoa pessoa = pessoaMapper.toModelPessoa(pessoaDto);
+    public RegistraPessoaDto createPessoa(RegistraPessoaDto registraPessoaDto) {
+        Pessoa pessoa = pessoaMapper.toModelRegistraPessoa(registraPessoaDto);
         pessoaRepository.save(pessoa);
-        return pessoaMapper.toDtoPessoa(pessoa);
+        return pessoaMapper.toDtoRegistraPessoa(pessoa);
     }
 
     public List<PessoaDto> listarPessoas() {
         List<Pessoa> pessoas = pessoaRepository.findAll();
         return pessoaMapper.toDtoPessoaList(pessoas);
+    }
+
+    public PessoaDto BuscarPessoaPorId() {
+        Pessoa pessoa = pessoaRepository.findById(1L).get();
+        return pessoaMapper.toDtoPessoa(pessoa);
     }
 }

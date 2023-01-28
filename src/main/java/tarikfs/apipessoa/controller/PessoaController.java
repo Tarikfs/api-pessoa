@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import tarikfs.apipessoa.dto.PessoaDto;
+import tarikfs.apipessoa.dto.RegistraPessoaDto;
 import tarikfs.apipessoa.service.PessoaService;
 
 @RequestMapping("/pessoa")
@@ -24,13 +25,18 @@ public class PessoaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<PessoaDto> createPessoa(@RequestBody PessoaDto pessoaDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.createPessoa(pessoaDto));
+    public ResponseEntity<RegistraPessoaDto> createPessoa(@RequestBody RegistraPessoaDto registraPessoaDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.createPessoa(registraPessoaDto));
     }
 
     @GetMapping
     ResponseEntity<List<PessoaDto>> listarPessoas() {
         return ResponseEntity.status(HttpStatus.OK).body(pessoaService.listarPessoas());
+    }
+
+    @GetMapping("{id}")
+    ResponseEntity<PessoaDto> buscarPessoaPorId() {
+        return ResponseEntity.status(HttpStatus.OK).body(pessoaService.BuscarPessoaPorId());
     }
 
 }
