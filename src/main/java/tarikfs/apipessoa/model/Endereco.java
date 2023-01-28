@@ -32,15 +32,30 @@ public class Endereco implements Serializable {
     @Column(name = "numero")
     private int numero;
 
+    private boolean principal;
+
     public Endereco() {
     }
 
-    public Endereco(@Size(min = 1, max = 50) String logradouro, @Size(min = 8, max = 8) int cep,
-            @Size(min = 1, max = 50) String cidade, int numero) {
+    public Endereco(Long id, String logradouro, int cep, String cidade, int numero, boolean principal) {
+        this.id = id;
         this.logradouro = logradouro;
         this.cep = cep;
         this.cidade = cidade;
         this.numero = numero;
+        this.principal = principal;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLogradouro() {
@@ -74,5 +89,15 @@ public class Endereco implements Serializable {
     public void setNumero(int numero) {
         this.numero = numero;
     }
+
+    public boolean isPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(boolean principal) {
+        this.principal = principal;
+    }
+    
+    
 
 }

@@ -3,18 +3,20 @@ package tarikfs.apipessoa.dto;
 public class RegistraEnderecoDto {
 
     private String logradouro;
-    private String cep;
-    private String numero;
+    private int cep;
+    private int numero;
     private String cidade;
+    private boolean principal;
 
     public RegistraEnderecoDto() {
     }
 
-    public RegistraEnderecoDto(String logradouro, String cep, String numero, String cidade) {
+    public RegistraEnderecoDto(String logradouro, int cep, int numero, String cidade, boolean principal) {
         this.logradouro = logradouro;
         this.cep = cep;
         this.numero = numero;
         this.cidade = cidade;
+        this.principal = principal;
     }
 
     public String getLogradouro() {
@@ -25,19 +27,19 @@ public class RegistraEnderecoDto {
         this.logradouro = logradouro;
     }
 
-    public String getCep() {
+    public int getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setCep(int cep) {
         this.cep = cep;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -48,4 +50,13 @@ public class RegistraEnderecoDto {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
+
+    public boolean isPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(boolean principal) {
+        this.principal = principal;
+    }
+
 }
