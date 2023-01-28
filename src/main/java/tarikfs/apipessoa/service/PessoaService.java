@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import jakarta.transaction.Transactional;
 import tarikfs.apipessoa.dto.PessoaDto;
+import tarikfs.apipessoa.dto.PessoaSemEnderecoDto;
 import tarikfs.apipessoa.dto.RegistraPessoaDto;
 import tarikfs.apipessoa.mapper.PessoaMapper;
 import tarikfs.apipessoa.model.Pessoa;
@@ -30,9 +31,9 @@ public class PessoaService {
         return pessoaMapper.toDtoRegistraPessoa(pessoa);
     }
 
-    public List<PessoaDto> listarPessoas() {
+    public List<PessoaSemEnderecoDto> listarPessoas() {
         List<Pessoa> pessoas = pessoaRepository.findAll();
-        return pessoaMapper.toDtoPessoaList(pessoas);
+        return pessoaMapper.toDtoPessoaSemEnderecoList(pessoas);
     }
 
     public PessoaDto BuscarPessoaPorId(Long id) {

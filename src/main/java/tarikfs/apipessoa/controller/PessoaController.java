@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import tarikfs.apipessoa.dto.PessoaDto;
+import tarikfs.apipessoa.dto.PessoaSemEnderecoDto;
 import tarikfs.apipessoa.dto.RegistraPessoaDto;
 import tarikfs.apipessoa.service.PessoaService;
 
@@ -34,7 +35,7 @@ public class PessoaController {
     }
 
     @GetMapping
-    ResponseEntity<List<PessoaDto>> listarPessoas() {
+    ResponseEntity<List<PessoaSemEnderecoDto>> listarPessoas() {
         return ResponseEntity.status(HttpStatus.OK).body(pessoaService.listarPessoas());
     }
 
