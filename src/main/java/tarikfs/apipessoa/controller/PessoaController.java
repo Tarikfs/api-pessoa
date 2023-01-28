@@ -34,7 +34,8 @@ public class PessoaController {
         return ResponseEntity.status(HttpStatus.OK).body(pessoaService.listarPessoas());
     }
 
-    @GetMapping("{id}")
+    // RegistraPessoaDto
+    @GetMapping("/{id}")
     ResponseEntity<PessoaDto> buscarPessoaPorId() {
         return ResponseEntity.status(HttpStatus.OK).body(pessoaService.BuscarPessoaPorId());
     }
