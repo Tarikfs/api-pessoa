@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import tarikfs.apipessoa.dto.PessoaDto;
@@ -27,4 +28,6 @@ public interface PessoaMapper {
     @Mapping(target = "id", ignore = true)
     Pessoa toModelRegistraPessoa(RegistraPessoaDto registraPessoaDto);
 
+    @Mapping(target = "id", ignore = true)
+    Pessoa mapPutModelPessoa(RegistraPessoaDto registraPessoaDto, @MappingTarget Pessoa pessoa);
 }

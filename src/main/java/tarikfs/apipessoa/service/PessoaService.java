@@ -1,9 +1,11 @@
 package tarikfs.apipessoa.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import jakarta.transaction.Transactional;
 import tarikfs.apipessoa.dto.PessoaDto;
@@ -33,8 +35,19 @@ public class PessoaService {
         return pessoaMapper.toDtoPessoaList(pessoas);
     }
 
-    public PessoaDto BuscarPessoaPorId() {
-        Pessoa pessoa = pessoaRepository.findById(1L).get();
-        return pessoaMapper.toDtoPessoa(pessoa);
+    public PessoaDto BuscarPessoaPorId(Long id) {
+        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
+        Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
+        return pessoaMapper.toDtoPessoa(pessoaModel);
+    }
+
+    @Transactional
+    public RegistraPessoaDto atualizaPessoa(@PathVariable Long id,
+            RegistraPessoaDto registraPessoaDto) {
+        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
+        Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
+        pessoaModel = pessoaMapper.mapPutModelPessoa(registraPessoaDto, pessoaModel);
+        pessoaRepository.save(pessoaModel);
+        return pessoaMapper.toDtoRegistraPessoa(pessoaModel);
     }
 }
