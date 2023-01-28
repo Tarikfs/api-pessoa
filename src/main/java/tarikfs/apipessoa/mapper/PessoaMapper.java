@@ -30,4 +30,7 @@ public interface PessoaMapper {
 
     @Mapping(target = "id", ignore = true)
     Pessoa mapPutModelPessoa(RegistraPessoaDto registraPessoaDto, @MappingTarget Pessoa pessoa);
+
+    @Mapping(target = "id", ignore = true)
+    Pessoa mapPatchModelPessoa(RegistraPessoaDto registraPessoaDto, @MappingTarget Pessoa pessoa);
 }

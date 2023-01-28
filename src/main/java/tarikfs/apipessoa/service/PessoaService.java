@@ -50,4 +50,14 @@ public class PessoaService {
         pessoaRepository.save(pessoaModel);
         return pessoaMapper.toDtoRegistraPessoa(pessoaModel);
     }
+
+    @Transactional
+    public RegistraPessoaDto atualizaParcialPessoa(@PathVariable Long id,
+            RegistraPessoaDto registraPessoaDto) {
+        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
+        Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
+        pessoaModel = pessoaMapper.mapPatchModelPessoa(registraPessoaDto, pessoaModel);
+        pessoaRepository.save(pessoaModel);
+        return pessoaMapper.toDtoRegistraPessoa(pessoaModel);
+    }
 }
