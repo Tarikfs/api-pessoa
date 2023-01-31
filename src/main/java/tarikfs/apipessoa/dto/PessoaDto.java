@@ -9,7 +9,7 @@ public class PessoaDto {
     private Long id;
     private String nome;
     private Date DataNascimento;
-    Endereco endereco;
+    private Endereco endereco;
 
     public PessoaDto() {
     }

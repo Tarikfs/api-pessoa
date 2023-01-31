@@ -34,6 +34,7 @@ public class Pessoa implements Serializable {
     private Date dataNascimento;
 
     @OneToMany(mappedBy = "pessoa")
+    @Column(name = "enderecos")
     private List<Endereco> enderecos;
 
     public Pessoa() {

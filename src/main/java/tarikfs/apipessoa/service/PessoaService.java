@@ -13,6 +13,7 @@ import tarikfs.apipessoa.dto.PessoaSemEnderecoDto;
 import tarikfs.apipessoa.dto.RegistraPessoaDto;
 import tarikfs.apipessoa.mapper.PessoaMapper;
 import tarikfs.apipessoa.model.Pessoa;
+import tarikfs.apipessoa.repository.EnderecoRepository;
 import tarikfs.apipessoa.repository.PessoaRepository;
 
 @Service
@@ -23,6 +24,9 @@ public class PessoaService {
 
     @Autowired
     PessoaRepository pessoaRepository;
+
+    @Autowired
+    EnderecoRepository enderecoRepository;
 
     @Transactional
     public RegistraPessoaDto createPessoa(RegistraPessoaDto registraPessoaDto) {
@@ -37,6 +41,12 @@ public class PessoaService {
     }
 
     public PessoaDto BuscarPessoaPorId(Long id) {
+        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
+        Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
+        return pessoaMapper.toDtoPessoa(pessoaModel);
+    }
+
+    public PessoaDto BuscarPessoaPorIdComEndereco(Long id) {
         Optional<Pessoa> pessoa = pessoaRepository.findById(id);
         Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
         return pessoaMapper.toDtoPessoa(pessoaModel);

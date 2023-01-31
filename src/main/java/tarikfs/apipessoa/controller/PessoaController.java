@@ -45,6 +45,12 @@ public class PessoaController {
         return ResponseEntity.status(HttpStatus.OK).body(pessoaDto);
     }
 
+    @GetMapping("/{id}/enderecos")
+    ResponseEntity<PessoaDto> buscarPessoaPorIdComEndereco(@PathVariable Long id) {
+        PessoaDto pessoaDto = pessoaService.BuscarPessoaPorIdComEndereco(id);
+        return ResponseEntity.status(HttpStatus.OK).body(pessoaDto);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<RegistraPessoaDto> atualizarPessoa(@PathVariable Long id,
             @Valid @RequestBody RegistraPessoaDto registraPessoaDto) {

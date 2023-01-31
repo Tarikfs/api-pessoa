@@ -27,22 +27,23 @@ public class EnderecoService {
     EnderecoMapper enderecoMapper;
 
     @Transactional
-    public RegistraEnderecoDto CriarEndereco(RegistraEnderecoDto enderecoDto, Long id) {
-        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
-        Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
-        Endereco enderecoModel = enderecoMapper.toModelRegistraEndereco(enderecoDto);
-        enderecoModel.setPessoa(pessoaModel);
-        if (enderecoModel.isPrincipal()) {
-            List<Endereco> enderecosDePessoa = pessoaModel.getEnderecos();
-            for (Endereco endereco : enderecosDePessoa) {
-                endereco.setPrincipal(false);
-            }
-            enderecoModel.setPrincipal(true);
-        } else {
-            enderecoModel.setPrincipal(false);
-        }
-        enderecoRepository.save(enderecoModel);
-        return enderecoMapper.toDtoRegistraEndereco(enderecoModel);
+    public RegistraEnderecoDto CriarEndereco(RegistraEnderecoDto enderecoDto,
+    Long id) {
+    Optional<Pessoa> pessoa = pessoaRepository.findById(id);
+    Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
+    Endereco enderecoModel = enderecoMapper.toModelRegistraEndereco(enderecoDto);
+    if (enderecoModel.isPrincipal()) {
+        List<Endereco> enderecosDePessoa = pessoaModel.getEnderecos();
+    for (Endereco endereco : enderecosDePessoa) {
+    endereco.setPrincipal(false);
+    }
+    enderecoModel.setPrincipal(true);
+    } else {
+    enderecoModel.setPrincipal(false);
+    }
+    enderecoModel.setPessoa(pessoaModel);
+    enderecoRepository.save(enderecoModel);
+    return enderecoMapper.toDtoRegistraEndereco(enderecoModel);
     }
 
 }

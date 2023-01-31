@@ -3,19 +3,16 @@ package tarikfs.apipessoa.mapper;
 import java.util.List;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import tarikfs.apipessoa.dto.EnderecoDto;
 import tarikfs.apipessoa.dto.RegistraEnderecoDto;
 import tarikfs.apipessoa.model.Endereco;
 
-@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = org.mapstruct.ReportingPolicy.IGNORE)
 public interface EnderecoMapper {
 
     Endereco toModelEndereco(EnderecoDto enderecoDto);
 
-    @Mapping(target = "id", ignore = true)
     EnderecoDto toDtoEndereco(Endereco endereco);
 
     List<EnderecoDto> toDtoEnderecoList(List<Endereco> enderecos);
@@ -24,7 +21,6 @@ public interface EnderecoMapper {
 
     RegistraEnderecoDto toDtoRegistraEndereco(Endereco endereco);
 
-    @Mapping(target = "id", ignore = true)
     Endereco toModelRegistraEndereco(RegistraEnderecoDto enderecoDto);
 
 }
