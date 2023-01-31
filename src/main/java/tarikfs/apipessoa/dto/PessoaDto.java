@@ -1,6 +1,7 @@
 package tarikfs.apipessoa.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 import tarikfs.apipessoa.model.Endereco;
 
@@ -9,16 +10,16 @@ public class PessoaDto {
     private Long id;
     private String nome;
     private Date DataNascimento;
-    private Endereco endereco;
+    private List<Endereco> enderecos;
 
     public PessoaDto() {
     }
 
-    public PessoaDto(Long id, String nome, Date dataNascimento, Endereco endereco) {
+    public PessoaDto(Long id, String nome, Date dataNascimento, List<Endereco> enderecos) {
         this.id = id;
         this.nome = nome;
-        this.DataNascimento = dataNascimento;
-        this.endereco = endereco;
+        DataNascimento = dataNascimento;
+        this.enderecos = enderecos;
     }
 
     public Long getId() {
@@ -45,14 +46,12 @@ public class PessoaDto {
         DataNascimento = dataNascimento;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
-
-    
 
 }
