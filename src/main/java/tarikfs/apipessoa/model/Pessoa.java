@@ -44,10 +44,11 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
 
-    public Pessoa(Long id, String nome, Date dataNascimento) {
+    public Pessoa(Long id, String nome, Date dataNascimento, List<Endereco> enderecos) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        this.enderecos = enderecos;
     }
 
     public static long getSerialversionuid() {

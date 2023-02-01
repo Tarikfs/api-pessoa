@@ -29,7 +29,7 @@ public class PessoaService {
     EnderecoRepository enderecoRepository;
 
     @Transactional
-    public RegistraPessoaDto createPessoa(RegistraPessoaDto registraPessoaDto) {
+    public RegistraPessoaDto criarPessoa(RegistraPessoaDto registraPessoaDto) {
         Pessoa pessoa = pessoaMapper.toModelRegistraPessoa(registraPessoaDto);
         pessoaRepository.save(pessoa);
         return pessoaMapper.toDtoRegistraPessoa(pessoa);
@@ -38,12 +38,6 @@ public class PessoaService {
     public List<PessoaSemEnderecoDto> listarPessoas() {
         List<Pessoa> pessoas = pessoaRepository.findAll();
         return pessoaMapper.toDtoPessoaSemEnderecoList(pessoas);
-    }
-
-    public PessoaDto BuscarPessoaPorId(Long id) {
-        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
-        Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
-        return pessoaMapper.toDtoPessoa(pessoaModel);
     }
 
     public PessoaDto BuscarPessoaPorIdComEndereco(Long id) {
@@ -62,13 +56,4 @@ public class PessoaService {
         return pessoaMapper.toDtoRegistraPessoa(pessoaModel);
     }
 
-    @Transactional
-    public RegistraPessoaDto atualizaParcialPessoa(@PathVariable Long id,
-            RegistraPessoaDto registraPessoaDto) {
-        Optional<Pessoa> pessoa = pessoaRepository.findById(id);
-        Pessoa pessoaModel = pessoa.orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
-        pessoaModel = pessoaMapper.mapPatchModelPessoa(registraPessoaDto, pessoaModel);
-        pessoaRepository.save(pessoaModel);
-        return pessoaMapper.toDtoRegistraPessoa(pessoaModel);
-    }
 }

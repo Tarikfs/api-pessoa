@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,19 +29,13 @@ public class PessoaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<RegistraPessoaDto> createPessoa(@RequestBody RegistraPessoaDto registraPessoaDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.createPessoa(registraPessoaDto));
+    public ResponseEntity<RegistraPessoaDto> criarPessoa(@RequestBody RegistraPessoaDto registraPessoaDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.criarPessoa(registraPessoaDto));
     }
 
     @GetMapping
     ResponseEntity<List<PessoaSemEnderecoDto>> listarPessoas() {
         return ResponseEntity.status(HttpStatus.OK).body(pessoaService.listarPessoas());
-    }
-
-    @GetMapping("/{id}")
-    ResponseEntity<PessoaDto> buscarPessoaPorId(@PathVariable Long id) {
-        PessoaDto pessoaDto = pessoaService.BuscarPessoaPorId(id);
-        return ResponseEntity.status(HttpStatus.OK).body(pessoaDto);
     }
 
     @GetMapping("/{id}/enderecos")
@@ -55,13 +48,6 @@ public class PessoaController {
     public ResponseEntity<RegistraPessoaDto> atualizarPessoa(@PathVariable Long id,
             @Valid @RequestBody RegistraPessoaDto registraPessoaDto) {
         RegistraPessoaDto pessoaDto = pessoaService.atualizaPessoa(id, registraPessoaDto);
-        return ResponseEntity.status(HttpStatus.OK).body(pessoaDto);
-    }
-
-    @PatchMapping("/{id}")
-    public ResponseEntity<RegistraPessoaDto> atualizarParcialPessoa(@PathVariable Long id,
-            @Valid @RequestBody RegistraPessoaDto registraPessoaDto) {
-        RegistraPessoaDto pessoaDto = pessoaService.atualizaParcialPessoa(id, registraPessoaDto);
         return ResponseEntity.status(HttpStatus.OK).body(pessoaDto);
     }
 

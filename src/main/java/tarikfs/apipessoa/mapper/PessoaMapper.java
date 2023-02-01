@@ -28,8 +28,6 @@ public interface PessoaMapper {
 
     Pessoa mapPutModelPessoa(RegistraPessoaDto registraPessoaDto, @MappingTarget Pessoa psessoa);
 
-    Pessoa mapPatchModelPessoa(RegistraPessoaDto registraPessoaDto, @MappingTarget Pessoa pessoa);
-
     List<PessoaSemEnderecoDto> toDtoPessoaSemEnderecoList(List<Pessoa> pessoas);
 
 }
