@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "fc637565-4eaa-434a-9e22-b0ed24bbade9",
+		"name": "api-pessoa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20305138"
+	},
+	"item": [
+		{
+			"name": "criar pessoa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"nome\": \"João Silva\",\n        \"dataNascimento\": \"1990-10-10\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "Localhost:8080/pessoa",
+					"host": [
+						"Localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criar endereço de pessoa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"logradouro\": \"Av. Delfim moreira\",\n        \"cep\": 22441000,\n        \"cidade\": \"rio de janeiro\",\n        \"numero\": 1051,\n        \"principal\": true\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "Localhost:8080/endereco?id=1",
+					"host": [
+						"Localhost"
+					],
+					"port": "8080",
+					"path": [
+						"endereco"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busca pessoas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"nome\": \"pessoa teste\",\n        \"dataNascimento\": \"1990-10-10\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "Localhost:8080/pessoa",
+					"host": [
+						"Localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busca pessoa por id com endereço",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"nome\": \"pessoa teste\",\n        \"dataNascimento\": \"1990-10-10\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "Localhost:8080/pessoa/1/enderecos",
+					"host": [
+						"Localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa",
+						"1",
+						"enderecos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualiza pessoa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"nome\": \"João Souza\",\n        \"dataNascimento\": \"1990-10-10\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "Localhost:8080/pessoa/1",
+					"host": [
+						"Localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "atualiza endereço",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"logradouro\": \"Av.Delfim Moreira\",\n        \"cep\": 22441000,\n        \"cidade\": \"Rio de janeiro\",\n        \"numero\": 1044,\n        \"principal\": true\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "Localhost:8080/endereco/1",
+					"host": [
+						"Localhost"
+					],
+					"port": "8080",
+					"path": [
+						"endereco",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
